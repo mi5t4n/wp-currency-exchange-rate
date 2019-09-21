@@ -14,9 +14,9 @@
 			</th>
 			<td>
 				<select name="wpcer_base_currency">
-				<?php foreach ( $currencies_code as $currency_code ) : ?>
-					<option value="<?php esc_attr_e( $currency_code ); ?>" <?php selected( $currency_code, $wpcer_base_currency ); ?>>
-						<?php esc_html_e( $currency_code ); ?>
+				<?php foreach ( $currencies as $currency_code => $currency_name) : ?>
+					<option value="<?php echo esc_attr( $currency_code ); ?>" <?php selected( $currency_code, $base_currency ); ?>>
+						<?php echo esc_html( "$currency_name ($currency_code)" ); ?>
 					</option>
 				<?php endforeach; ?>
 				</select>
@@ -33,9 +33,9 @@
 			</th>
 			<td>
 				<select name="wpcer_conversion_currency">
-				<?php foreach ( $currencies_code as $currency_code ) : ?>
-					<option value="<?php esc_attr_e( $currency_code ); ?>" <?php selected( $currency_code, $wpcer_conversion_currency ); ?>>
-						<?php esc_html_e( $currency_code ); ?>
+				<?php foreach ( $currencies as $currency_code => $currency_name ) : ?>
+					<option value="<?php echo esc_attr( $currency_code ); ?>" <?php selected( $currency_code, $conversion_currency ); ?>>
+						<?php echo esc_attr( "$currency_name ($currency_code)" ); ?>
 					</option>
 				<?php endforeach; ?>					
 				</select>
@@ -55,22 +55,22 @@
 				<input type="number"
 					name="wpcer_fetch_interval_num"
 					id ="wpcer_fetch_interval_num" 
-					value="<?php echo esc_attr( $wpcer_fetch_interval_num ); ?>" />
+					value="<?php echo esc_attr( $fetch_interval_num ); ?>" />
 
 				<select name="wpcer_fetch_interval_unit">
-					<option value="<?php echo esc_attr( HOUR_IN_SECONDS ); ?>" <?php selected( HOUR_IN_SECONDS, $wpcer_fetch_interval_unit ); ?>>
+					<option value="<?php echo esc_attr( HOUR_IN_SECONDS ); ?>" <?php selected( HOUR_IN_SECONDS, $fetch_interval_unit ); ?>>
 						<?php esc_html_e( 'Hours', '' ); ?>
 					</option>
-					<option value="<?php echo esc_attr( DAY_IN_SECONDS ); ?>" <?php selected( DAY_IN_SECONDS, $wpcer_fetch_interval_unit ); ?>>
+					<option value="<?php echo esc_attr( DAY_IN_SECONDS ); ?>" <?php selected( DAY_IN_SECONDS, $fetch_interval_unit ); ?>>
 						<?php esc_html_e( 'Days', '' ); ?>
 					</option>
-					<option value="<?php echo esc_attr( WEEK_IN_SECONDS ); ?>" <?php selected( WEEK_IN_SECONDS, $wpcer_fetch_interval_unit ); ?>>
+					<option value="<?php echo esc_attr( WEEK_IN_SECONDS ); ?>" <?php selected( WEEK_IN_SECONDS, $fetch_interval_unit ); ?>>
 						<?php esc_html_e( 'Weeks', '' ); ?>
 					</option>
-					<option value="<?php echo esc_attr( MONTH_IN_SECONDS ); ?>" <?php selected( MONTH_IN_SECONDS, $wpcer_fetch_interval_unit ); ?>>
+					<option value="<?php echo esc_attr( MONTH_IN_SECONDS ); ?>" <?php selected( MONTH_IN_SECONDS, $fetch_interval_unit ); ?>>
 						<?php esc_html_e( 'Months', '' ); ?>
 					</option>
-					<option value="<?php echo esc_attr( YEAR_IN_SECONDS ); ?>" <?php selected( YEAR_IN_SECONDS, $wpcer_fetch_interval_unit ); ?>>
+					<option value="<?php echo esc_attr( YEAR_IN_SECONDS ); ?>" <?php selected( YEAR_IN_SECONDS, $fetch_interval_unit ); ?>>
 						<?php esc_html_e( 'Years', '' ); ?>
 					</option>
 				</select>

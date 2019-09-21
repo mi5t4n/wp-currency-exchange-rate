@@ -5,15 +5,15 @@
  * @link       https://sagartamang.com.np
  * @since      1.0.0
  *
- * @package    Wp_Currency_Exchange_Rate_Options
- * @subpackage Wp_Currency_Exchange_Rate_Options/admin
+ * @package    Wp_Currency_Exchange_Rate
+ * @subpackage Wp_Currency_Exchange_Rate/admin
  */
 
 /**
  * The options page.
  *
- * @package    Wp_Currency_Exchange_Rate_Options
- * @subpackage Wp_Currency_Exchange_Rate_Options/admin
+ * @package    Wp_Currency_Exchange_Rate
+ * @subpackage Wp_Currency_Exchange_Rate/admin
  * @author     Sagar Bahadur Tamang <mi5t4n@gmail.com>
  */
 class Wp_Currency_Exchange_Rate_Options {
@@ -66,6 +66,7 @@ class Wp_Currency_Exchange_Rate_Options {
 	 * Initialization.
 	 *
 	 * @since 1.0.0
+	 * @access private
 	 */
 	private function init() {
 		$this->tabs = array(
@@ -74,12 +75,16 @@ class Wp_Currency_Exchange_Rate_Options {
 		);
 
 		$this->init_hooks();
+
+		// Allow 3rd party to remove hooks, shortcodes and widgets.
+		do_action( 'wpcer_options_unhook', $this );
 	}
 
 	/**
 	 * Initialize hooks.
 	 *
 	 * @since 1.0.0
+	 * @access private
 	 */
 	private function init_hooks() {
 		// Add options menu.
@@ -98,14 +103,15 @@ class Wp_Currency_Exchange_Rate_Options {
 	 * Display settings tab content.
 	 *
 	 * @since 1.0.0
+	 * @access public
 	 */
 	public function settings_page_tab_content() {
 		// Get settings.
-		$currencies_code           = get_option( 'wpcer_currencies_code' );
-		$wpcer_base_currency       = get_option( 'wpcer_base_currency' );
-		$wpcer_conversion_currency = get_option( 'wpcer_conversion_currency' );
-		$wpcer_fetch_interval_num  = get_option( 'wpcer_fetch_interval_num' );
-		$wpcer_fetch_interval_unit = get_option( 'wpcer_fetch_interval_unit' );
+		$currencies          = Wp_Currency_Exchange_Rate_Functions::get_currency_codes_and_names();
+		$base_currency       = get_option( 'wpcer_base_currency' );
+		$conversion_currency = get_option( 'wpcer_conversion_currency' );
+		$fetch_interval_num  = get_option( 'wpcer_fetch_interval_num' );
+		$fetch_interval_unit = get_option( 'wpcer_fetch_interval_unit' );
 
 		$tab_selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'settings';
 
@@ -122,6 +128,7 @@ class Wp_Currency_Exchange_Rate_Options {
 	 * Display settings page header.
 	 *
 	 * @since 1.0.0
+	 * @access public
 	 */
 	public function settings_page_tabs() {
 		global $pagenow;
@@ -138,6 +145,7 @@ class Wp_Currency_Exchange_Rate_Options {
 	 * Add options page.
 	 *
 	 * @since 1.0.0
+	 * @access public
 	 */
 	public function add_admin_menu() {
 		add_options_page(
@@ -151,11 +159,14 @@ class Wp_Currency_Exchange_Rate_Options {
 
 	/**
 	 * Display options page.
+	 *
+	 * @since 1.0.0
+	 * @access public
 	 */
 	public function wpcer_options_page() {
 		global $pagenow;
 
-		if ( 'options-general.php' === $pagenow && 'wpcer-options-page' === $_GET['page'] ) {		
+		if ( 'options-general.php' === $pagenow && 'wpcer-options-page' === $_GET['page'] ) {
 
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/wp-currency-exchange-rate-admin-display.php';
 		}
@@ -165,6 +176,7 @@ class Wp_Currency_Exchange_Rate_Options {
 	 * Settings form.
 	 *
 	 * @since 1.0.0
+	 * @access public
 	 */
 	public function setttings_init() {
 		register_setting( 'wpcer', 'wpcer_base_currency' );
