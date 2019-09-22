@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -123,9 +122,9 @@ class Wp_Currency_Exchange_Rate {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-currency-exchange-rate-public.php';
 
 		/**
-		 * The class responsible for useful functions.
+		 * The class responsible for API.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-currency-exchange-rate-functions.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-currency-exchange-rate-api.php';
 
 		/**
 		 * The class responsible for shortcodes.
@@ -133,9 +132,19 @@ class Wp_Currency_Exchange_Rate {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-currency-exchange-rate-shortcode.php';
 
 		/**
+		 * The class responsible for notices.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-currency-exchange-rate-notices.php';
+
+		/**
 		 * The class responsible for options.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-currency-exchange-rate-options.php';
+
+		/**
+		 * The class responsible for useful functions.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-currency-exchange-rate-functions.php';
 
 		$this->loader = new Wp_Currency_Exchange_Rate_Loader();
 
@@ -186,6 +195,7 @@ class Wp_Currency_Exchange_Rate {
 		$plugin_public    = new Wp_Currency_Exchange_Rate_Public( $this->get_plugin_name(), $this->get_version() );
 		$plugin_shortcode = new Wp_Currency_Exchange_Rate_Shortcode( $this->get_plugin_name(), $this->get_version() );
 		$plugin_options   = new Wp_Currency_Exchange_Rate_Options( $this->get_plugin_name(), $this->get_version() );
+		$plugin_notices   = new Wp_Currency_Exchange_Rate_Notices( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );

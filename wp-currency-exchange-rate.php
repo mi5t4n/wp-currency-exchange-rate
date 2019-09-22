@@ -35,6 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'WP_CURRENCY_EXCHANGE_RATE_VERSION', '1.0.0' );
+define( 'WP_CURRENCY_EXCHANGE_RATE_PLUGIN_NAME', 'wp-currency-exchange-rate' );
 
 /**
  * The code that runs during plugin activation.

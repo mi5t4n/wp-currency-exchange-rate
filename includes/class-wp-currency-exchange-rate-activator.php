@@ -37,12 +37,6 @@ class Wp_Currency_Exchange_Rate_Activator {
 			update_option( 'wp_currency_exchange_rate', WP_CURRENCY_EXCHANGE_RATE_VERSION, true );
 		}
 
-		// Get the currencies code.
-		$currencies_code = Wp_Currency_Exchange_Rate_Functions::get_currencies_code();
-
-		// Save the currencies code.
-		update_option( 'wpcer_currencies_code', $currencies_code );
-
 	}
 
 }

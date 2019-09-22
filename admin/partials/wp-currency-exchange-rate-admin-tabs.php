@@ -18,7 +18,7 @@
 	<?php
 	foreach ( $tabs as $tab_slug => $tab_name ) {
 		$class = ( $tab_selected === $tab_slug ) ? ' nav-tab-active' : '';
-		printf( '<a class="nav-tab%s" href="?page=wpcer-options-page&tab=%s">%s</a>', esc_attr( $class ), esc_attr( $tab_slug), esc_html( $tab_name ) );
+		printf( '<a class="nav-tab%s" href="?page=wpcer-options-page&tab=%s">%s</a>', esc_attr( $class ), esc_attr( $tab_slug ), esc_html( $tab_name ) );
 	}
 	?>
 	</h2>

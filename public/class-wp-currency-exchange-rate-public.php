@@ -95,7 +95,23 @@ class Wp_Currency_Exchange_Rate_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-currency-exchange-rate-public.js', array( 'jquery' ), $this->version, false );
+		// Get rates.
+		$rates = Wp_Currency_Exchange_Rate_Functions::get_exchange_rates();
+
+		// Get number of decimals.
+		$number_of_decimals = Wp_Currency_Exchange_Rate_Functions::get_number_of_decimals();
+
+		// Register the public JS.
+		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-currency-exchange-rate-public.js', array( 'jquery' ), $this->version, false );
+		wp_localize_script(
+			$this->plugin_name,
+			'wpcer',
+			array(
+				'rates'            => $rates,
+				'numberOfDecimals' => $number_of_decimals,
+			)
+		);
+		wp_enqueue_script( $this->plugin_name );
 
 	}
 

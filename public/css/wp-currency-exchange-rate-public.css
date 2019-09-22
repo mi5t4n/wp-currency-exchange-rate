@@ -2,3 +2,41 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+* {
+  box-sizing: border-box;
+}
+
+.wpcer-base-currency {
+  color: grey;    
+  font-size: 19px;
+}
+
+.wpcer-conversion-currency {
+  font-size: 35px;
+}
+
+.wpcer-date-time {
+  color: grey;
+  font-size: 10px;
+}
+
+.wpcer-form-group {
+  margin-top: 5px;
+}
+
+.wpcer-card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.wpcer-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.wpcer-container {
+  padding: 10px 5px;
+}

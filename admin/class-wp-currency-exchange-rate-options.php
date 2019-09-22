@@ -108,13 +108,16 @@ class Wp_Currency_Exchange_Rate_Options {
 	public function settings_page_tab_content() {
 		// Get settings.
 		$currencies          = Wp_Currency_Exchange_Rate_Functions::get_currency_codes_and_names();
-		$base_currency       = get_option( 'wpcer_base_currency' );
-		$conversion_currency = get_option( 'wpcer_conversion_currency' );
-		$fetch_interval_num  = get_option( 'wpcer_fetch_interval_num' );
-		$fetch_interval_unit = get_option( 'wpcer_fetch_interval_unit' );
+		$base_currency       = Wp_Currency_Exchange_Rate_Functions::get_base_currency();
+		$conversion_currency = Wp_Currency_Exchange_Rate_Functions::get_conversion_currency();
+		$fetch_interval_num  = Wp_Currency_Exchange_Rate_Functions::get_fetch_interval_num();
+		$fetch_interval_unit = Wp_Currency_Exchange_Rate_Functions::get_fetch_interval_unit();
+		$number_of_decimals  = Wp_Currency_Exchange_Rate_Functions::get_number_of_decimals();
 
+		// Get the selected tab.
 		$tab_selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'settings';
 
+		// Include the proper tab content.
 		if ( 'settings' === $tab_selected ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/wp-currency-exchange-rate-admin-settings-tab.php';
 		} elseif ( 'usage' === $tab_selected ) {
@@ -183,5 +186,6 @@ class Wp_Currency_Exchange_Rate_Options {
 		register_setting( 'wpcer', 'wpcer_conversion_currency' );
 		register_setting( 'wpcer', 'wpcer_fetch_interval_num' );
 		register_setting( 'wpcer', 'wpcer_fetch_interval_unit' );
+		register_setting( 'wpcer', 'wpcer_number_of_decimals' );
 	}
 }

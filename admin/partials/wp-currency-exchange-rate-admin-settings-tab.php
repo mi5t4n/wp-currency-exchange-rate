@@ -1,7 +1,13 @@
 <?php
 /**
  * Settings tab content.
+ *
+ * @since 1.0.0
+ *
+ * @package    Wp_Currency_Exchange_Rate
+ * @subpackage Wp_Currency_Exchange_Rate/admin
  */
+
 ?>
 <table class="form-table">
 	<tbody>
@@ -14,7 +20,7 @@
 			</th>
 			<td>
 				<select name="wpcer_base_currency">
-				<?php foreach ( $currencies as $currency_code => $currency_name) : ?>
+				<?php foreach ( $currencies as $currency_code => $currency_name ) : ?>
 					<option value="<?php echo esc_attr( $currency_code ); ?>" <?php selected( $currency_code, $base_currency ); ?>>
 						<?php echo esc_html( "$currency_name ($currency_code)" ); ?>
 					</option>
@@ -43,10 +49,27 @@
 		</tr>
 		<!-- ./ Conversion Currency -->
 
+		<!-- Number of decimals -->
+		<tr>
+			<th scope="row">
+				<label for="wpcer-number-of-decimals">
+					<?php esc_html_e( 'Number of decimals', '' ); ?>
+				</label>
+			</th>
+
+			<td>
+				<input type="number"
+					name="wpcer_number_of_decimals"
+					id="wpcer-number-of-decimals"
+					value= "<?php echo esc_attr( $number_of_decimals ); ?>" />
+			</td>
+		</tr>
+		<!-- ./ Number of decimals -->
+
 		<!-- Fetch Interval -->
 		<tr>
 			<th scope="row">
-				<label for="fetch_interval">
+				<label for="wpcer-fetch-interval-num">
 					<?php esc_html_e( 'Fetch Interval', '' ); ?>
 				</label>
 			</th>
@@ -54,7 +77,7 @@
 			<td>
 				<input type="number"
 					name="wpcer_fetch_interval_num"
-					id ="wpcer_fetch_interval_num" 
+					id ="wpcer-fetch-interval-num" 
 					value="<?php echo esc_attr( $fetch_interval_num ); ?>" />
 
 				<select name="wpcer_fetch_interval_unit">
@@ -81,3 +104,4 @@
 		<!-- ./ Fetch Interval -->
 	</tbody>
 </table>
+<?php
