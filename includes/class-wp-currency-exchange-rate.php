@@ -181,6 +181,8 @@ class Wp_Currency_Exchange_Rate {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+		// Add actions link under plugin's name.
+		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links', 10, 4 );
 	}
 
 	/**

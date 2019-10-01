@@ -98,4 +98,36 @@ class Wp_Currency_Exchange_Rate_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-currency-exchange-rate-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+
+	/**
+	 * Add links under plugin name along with activate and deactivate.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @param string[] $actions      An array of plugin action links. By default this can include 'activate', 'deactivate', and 'delete'. With Multisite active this can also include 'network_active' and 'network_only' items.
+	 * @param string   $plugin_file  Path to the plugin file relative to the plugins directory.
+	 * @param Array    $plugin_data  An array of plugin data. See get_plugin_data().
+	 * @param string   $context      The plugin context. By default this can include 'all', 'active', 'inactive', 'recently_activated', 'upgrade', 'mustuse', 'dropins', and 'search'.
+	 *
+	 * @return string[]              Plugin action links.
+	 */
+	public function plugin_action_links( $actions, $plugin_file, $plugin_data, $context ) {
+
+		// Get plugin file.
+		$plugin = plugin_basename( WP_CURRENCY_EXCHANGE_RATE_PLUGIN_FILE );
+
+		// Bail early if the plugin is not Affiliate Engine.
+		if ( $plugin !== $plugin_file ) {
+			return $actions;
+		}
+
+		// Show settings link if the plugin is active.
+		if ( is_plugin_active( $plugin ) ) {
+			$settings_page_url   = get_admin_url( null, 'options-general.php?page=wpcer-options-page' );
+			$actions['settings'] = "<a href=\"{$settings_page_url}\">Settings</a>";
+		}
+
+		return $actions;
+	}
 }
