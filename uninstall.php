@@ -29,3 +29,11 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
+
+// Remove options settings.
+delete_option( 'wpcer_base_currency' );
+delete_option( 'wpcer_conversion_currency' );
+delete_option( 'wpcer_fetch_interval_num' );
+delete_option( 'wpcer_fetch_interval_unit' );
+delete_option( 'wpcer_number_of_decimals' );
+delete_transient( 'wpcer_exchange_rates' );
