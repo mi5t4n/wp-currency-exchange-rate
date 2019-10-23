@@ -70,8 +70,8 @@ class Wp_Currency_Exchange_Rate_Options {
 	 */
 	private function init() {
 		$this->tabs = array(
-			'settings' => __( 'Settings', '' ),
-			'usage'    => __( 'Usage', '' ),
+			'settings' => __( 'Settings', 'wp-currency-exchange-rate' ),
+			'usage'    => __( 'Usage', 'wp-currency-exchange-rate' ),
 		);
 
 		$this->init_hooks();
@@ -152,8 +152,8 @@ class Wp_Currency_Exchange_Rate_Options {
 	 */
 	public function add_admin_menu() {
 		add_options_page(
-			__( 'WP Currency Exchange Rate', '' ),
-			__( 'WP Currency Exchange Rate', '' ),
+			__( 'WP Currency Exchange Rate', 'wp-currency-exchange-rate' ),
+			__( 'WP Currency Exchange Rate', 'wp-currency-exchange-rate' ),
 			'administrator',
 			'wpcer-options-page',
 			array( $this, 'wpcer_options_page' ),

@@ -92,7 +92,7 @@ class Wp_Currency_Exchange_Rate_Notices {
 		// Get the exchange rates.
 		$rates = Wp_Currency_Exchange_Rate_Functions::get_exchange_rates();
 
-		$message = __( 'Currencies exchange rates are not set. Please go to the settings and get the latest exchange rates.', '' );
+		$message = __( 'Currencies exchange rates are not set. Please go to the settings and get the latest exchange rates.', 'wp-currency-exchange-rate' );
 		$message = apply_filters( 'wpcer_exchange_rates_not_set', $message );
 
 		// Display currencies code are not found.

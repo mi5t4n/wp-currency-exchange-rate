@@ -15,7 +15,7 @@
 		<tr>
 			<th scope="row">
 				<label for="wpcer_base_currency">
-					<?php esc_html_e( 'Base Currency', '' ); ?>
+					<?php esc_html_e( 'Base Currency', 'wp-currency-exchange-rate' ); ?>
 				</label>
 			</th>
 			<td>
@@ -34,7 +34,7 @@
 		<tr>
 			<th scope="row">
 				<label for="wpcer_conversion_currency">
-					<?php esc_html_e( 'Conversion Currency', '' ); ?>
+					<?php esc_html_e( 'Conversion Currency', 'wp-currency-exchange-rate' ); ?>
 				</label>
 			</th>
 			<td>
@@ -53,7 +53,7 @@
 		<tr>
 			<th scope="row">
 				<label for="wpcer-number-of-decimals">
-					<?php esc_html_e( 'Number of decimals', '' ); ?>
+					<?php esc_html_e( 'Number of decimals', 'wp-currency-exchange-rate' ); ?>
 				</label>
 			</th>
 
@@ -70,7 +70,7 @@
 		<tr>
 			<th scope="row">
 				<label for="wpcer-fetch-interval-num">
-					<?php esc_html_e( 'Fetch Interval', '' ); ?>
+					<?php esc_html_e( 'Fetch Interval', 'wp-currency-exchange-rate' ); ?>
 				</label>
 			</th>
 
@@ -82,19 +82,19 @@
 
 				<select name="wpcer_fetch_interval_unit">
 					<option value="<?php echo esc_attr( HOUR_IN_SECONDS ); ?>" <?php selected( HOUR_IN_SECONDS, $fetch_interval_unit ); ?>>
-						<?php esc_html_e( 'Hours', '' ); ?>
+						<?php esc_html_e( 'Hours', 'wp-currency-exchange-rate' ); ?>
 					</option>
 					<option value="<?php echo esc_attr( DAY_IN_SECONDS ); ?>" <?php selected( DAY_IN_SECONDS, $fetch_interval_unit ); ?>>
-						<?php esc_html_e( 'Days', '' ); ?>
+						<?php esc_html_e( 'Days', 'wp-currency-exchange-rate' ); ?>
 					</option>
 					<option value="<?php echo esc_attr( WEEK_IN_SECONDS ); ?>" <?php selected( WEEK_IN_SECONDS, $fetch_interval_unit ); ?>>
-						<?php esc_html_e( 'Weeks', '' ); ?>
+						<?php esc_html_e( 'Weeks', 'wp-currency-exchange-rate' ); ?>
 					</option>
 					<option value="<?php echo esc_attr( MONTH_IN_SECONDS ); ?>" <?php selected( MONTH_IN_SECONDS, $fetch_interval_unit ); ?>>
-						<?php esc_html_e( 'Months', '' ); ?>
+						<?php esc_html_e( 'Months', 'wp-currency-exchange-rate' ); ?>
 					</option>
 					<option value="<?php echo esc_attr( YEAR_IN_SECONDS ); ?>" <?php selected( YEAR_IN_SECONDS, $fetch_interval_unit ); ?>>
-						<?php esc_html_e( 'Years', '' ); ?>
+						<?php esc_html_e( 'Years', 'wp-currency-exchange-rate' ); ?>
 					</option>
 				</select>
 
